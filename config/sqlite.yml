@@ -1,0 +1,20 @@
+Default: &defaults
+  database: r0z.sqlite3
+  poolsize: 10
+
+Development:
+  <<: *defaults
+
+Testing:
+  database: r0z_test.sqlite3
+  <<: *defaults
+
+Staging:
+  database: r0z_staging.sqlite3
+  poolsize: 100
+  <<: *defaults
+
+Production:
+  database: r0z_production.sqlite3
+  poolsize: 100
+  <<: *defaults
