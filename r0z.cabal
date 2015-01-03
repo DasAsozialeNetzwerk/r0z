@@ -21,6 +21,8 @@ library
                      Settings.Development
                      Handler.Home
                      Handler.View
+                     Handler.About
+                     Handler.Stats
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

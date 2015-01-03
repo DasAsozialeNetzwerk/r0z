@@ -5,3 +5,5 @@
 
 !/#Int ViewR GET
 / HomeR GET
+/about AboutR GET
+/stats StatsR GET
