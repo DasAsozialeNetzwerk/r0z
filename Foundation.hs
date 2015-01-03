@@ -11,7 +11,7 @@ import Network.HTTP.Client.Conduit (Manager, HasHttpManager (getHttpManager))
 import qualified Settings
 import Settings.Development (development)
 import qualified Database.Persist
-import Database.Persist.Sql (SqlPersistT)
+import Database.Persist.Sql
 import Settings.StaticFiles
 import Settings (widgetFile, Extra (..))
 import Model
@@ -118,7 +118,7 @@ instance Yesod App where
 
 -- How to run database actions.
 instance YesodPersist App where
-    type YesodPersistBackend App = SqlPersistT
+    type YesodPersistBackend App = SqlBackend
     runDB = defaultRunDB persistConfig connPool
 instance YesodPersistRunner App where
     getDBRunner = defaultGetDBRunner connPool
@@ -145,6 +145,8 @@ instance YesodAuth App where
     authPlugins _ = [authBrowserId def]
 
     authHttpManager = httpManager
+
+instance YesodAuthPersist App
 
 -- This instance is required to use forms. You can modify renderMessage to
 -- achieve customized and internationalized form validation messages.
